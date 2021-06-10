@@ -10,13 +10,15 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductTypeComponent } from './product-type/product-type.component';
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    ProductTypeComponent
+    ProductTypeComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
