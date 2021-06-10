@@ -1,0 +1,45 @@
+<div style="background-color: aliceblue; height: 1028px">
+  <h1 style="align-items: center; display: flex; justify-content: center">
+    PAL PROJECT
+  </h1>
+  <table
+    *ngFor="let user of users"
+    style="display: flex; align-items: center; justify-content: center"
+  >
+    <td style="border: dotted 1px black; width: 100px; background-color: silver">
+      {{ user.name }}
+    </td>
+    <td style="border: 1px solid black; width: 100px; background-color: silver">
+      {{ user.surname }}
+    </td>
+    <td><button (click)="editUser(user.idUser)">Edit</button></td>
+    <td><button (click)="showBasicDialog(user.idUser)">Delete</button></td>
+  </table>
+  <div [formGroup]="userForm" *ngIf="userForm">
+    <input id="name" name="name" formControlName="name" />
+    <input id="surname" name="surname" formControlName="surname" />
+    <button (click)="editingUser()">Edit User</button>
+    <button (click)="clearForm()">Reset</button>
+  </div>
+  <div [formGroup]="createUserForm" *ngIf="userForm">
+    <input id="name" name="name" formControlName="name" />
+    <input id="surname" name="surname" formControlName="surname" />
+    <button (click)="createUser()">Create User</button>
+  </div>
+</div>
+<p-dialog
+  header="Delete user:"
+  [(visible)]="displayBasic"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+>
+  <p>Are you sure you want to delete the user?</p>
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="deleteUser()"
+      label="Ok"
+      styleClass="p-button-text"
+    ></p-button>
+  </ng-template>
+</p-dialog>
